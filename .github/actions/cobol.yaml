@@ -1,0 +1,17 @@
+name: Setup COBOL
+
+on: push
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: Checkout submodules
+        uses: textbook/git-checkout-submodule-action@master
+      - uses: fabasoad/setup-cobol-action@main
+      - name: HW
+        run: |
+          cobc -x hw.cob
+          ./hw
